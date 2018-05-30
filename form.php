@@ -1,9 +1,20 @@
 <?php 
 	if (isset($_POST['submit'])) {
-		echo 'yes! it work!';
+		
+		$name = ['aaa', 'bbb', 'ccc'];
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-		echo $username . ' ' . $password;
+		
+
+		if (strlen($username) < 2) {
+			echo 'username has to be longer than 5.';
+		}
+
+		if (!in_array($username, $name)) {
+			echo 'You are not allow to log in';
+		} else {
+			echo 'welcome';
+		}
 	}
  ?>
 
