@@ -23,6 +23,17 @@
 		$password = $_POST['password'];
 		$id = $_POST['id'];
 		
+		// for security;
+		$username = mysqli_real_escape_string($connection, $username);
+		$password = mysqli_real_escape_string($connection, $password);
+
+		// encript password
+		$hashFormat = "$2y$10$";
+		$salt = "alsicnfguenshcjtsd18";
+		$hashF_and_salt = $hashFormat . $salt;
+		$password = crypt($password, $hashF_and_salt);
+
+
 
 		$query = "UPDATE users SET username = '$username', password = '$password' WHERE id = $id";
 
